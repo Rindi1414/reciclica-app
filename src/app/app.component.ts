@@ -1,18 +1,23 @@
 import { Component } from '@angular/core';
+
+interface AppPage {
+  url: string;
+  icon: string;
+  title: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+  public appPages: AppPage[] = [
+    { url: '/home', icon: 'home', title: 'Home' },
+    { url: '/settings', icon: 'settings', title: 'Settings' },
+    // Tambahkan item lainnya sesuai kebutuhan
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders', 'Test1', 'Test2', 'Test3', 'Test4' ];
+
   constructor() {}
 }
