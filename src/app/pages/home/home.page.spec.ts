@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomePage } from './home.page';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
@@ -9,20 +9,20 @@ describe('HomePage', () => {
   let fixture: ComponentFixture<HomePage>;
   let router: Router;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations:[ HomePage ],
+      declarations: [ HomePage ],
       imports: [
         IonicModule.forRoot(),
         AppRoutingModule
       ]
-    }).compileComponents();
-
+    })
 
     fixture = TestBed.createComponent(HomePage);
     router = TestBed.get(Router);
     component = fixture.componentInstance;
-  }));
+    fixture.detectChanges();
+  });
 
   it('should go to pickup-calls on see all', () => {
     spyOn(router, 'navigate');
@@ -32,10 +32,10 @@ describe('HomePage', () => {
     expect(router.navigate).toHaveBeenCalledWith(['pickup-calls']);
   })
 
-  it('should go to new pickup call on create pickup call', () => {
+  it('should go to new pickup-calls on create pickup call', () => {
     spyOn(router, 'navigate');
 
-    component.newPickupCall()
+    component.goToPickupCall();
 
     expect(router.navigate).toHaveBeenCalledWith(['pickup-call']);
   })

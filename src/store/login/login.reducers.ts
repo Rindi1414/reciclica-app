@@ -1,12 +1,11 @@
-import { createReducer, on, Action } from "@ngrx/store";
-import { login, loginFail, loginSuccess, recoverPassword, recoverPasswordFail, recoverPasswordSuccess } from "./login.actions";
+import { createReducer, on, Action} from "@ngrx/store";
 import { LoginState } from "./LoginState";
-import { AppInitialState } from "../AppInitialState";
+import { login, loginFail, loginSuccess, recoverPassword, recoverPasswordFail, recoverPasswordSuccess } from "./login.actions";
+import { AppInitialState } from "./AppInitialState";
 
 const initialState: LoginState = AppInitialState.login;
 
-const reducer = createReducer(
-  initialState,
+const reducer = createReducer(initialState,
   on(recoverPassword, currentState => {
     return {
       ...currentState,
@@ -20,7 +19,7 @@ const reducer = createReducer(
       ...currentState,
       error: null,
       isRecoveredPassword: true,
-      isRecoveringPassword: false
+      isRecoveringPassword: false,
     };
   }),
   on(recoverPasswordFail, (currentState, action) => {
@@ -54,8 +53,9 @@ const reducer = createReducer(
       isLoggingIn: false
     }
   })
-);
+)
 
-export function loginReducer(state: LoginState | undefined, action: Action): LoginState {
-  return reducer(state, action);
-}
+
+export function loginReducer(state: LoginState, action: Action) {
+    return reducer(state, action);
+  }

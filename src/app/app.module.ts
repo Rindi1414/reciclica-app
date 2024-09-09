@@ -9,31 +9,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppStoreModule } from 'src/store/AppStoreModule';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { LoadingComponent } from './components/loading/loading.component';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingComponent
   ],
-  imports: [
-    BrowserModule,
+  imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
     ...AppStoreModule,
-    StoreDevtoolsModule.instrument({ maxAge: 25 })
+    StoreDevtoolsModule.instrument({maxAge: 25})
+
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{
+    provide: RouteReuseStrategy,
+    useClass: IonicRouteStrategy
+  }],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor() {
-    console.log('Firebase Config:', environment.firebaseConfig);
-  }
-}
+export class AppModule {}

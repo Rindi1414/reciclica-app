@@ -8,7 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { PickupCallCardComponent } from 'src/app/components/pickup-call-card/pickup-call-card.component';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from 'src/app/shared.module';
+
 
 
 @NgModule({

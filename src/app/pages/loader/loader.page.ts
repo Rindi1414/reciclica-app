@@ -16,4 +16,4 @@ export class LoaderPage implements OnInit {
     }, 1000)
   }
 
-  }
+}

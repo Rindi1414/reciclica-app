@@ -14,7 +14,7 @@ export class PickupCallPage implements OnInit {
   }
 
   newPickupCall(){
-    this.router.navigate(['home']);
+    this.router.navigate(['home'])
   }
 
 }

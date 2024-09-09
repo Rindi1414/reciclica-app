@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { ErrorMessageComponent } from './error-message.component';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 describe('ErrorMessageComponent', () => {
   let component: ErrorMessageComponent;
@@ -21,22 +21,19 @@ describe('ErrorMessageComponent', () => {
   it('should show error message on field touched and error present', () => {
     component.field = new FormGroup({anyField: new FormControl()});
 
-    component.field.markAllAsTouched();
+    component.field.markAsTouched();
     component.field.setErrors({anyError: true});
-    component.error = "anyError";
-
-    expect(component.shouldShowComponent()).toBeTruthy();
-
-
+    component.error = 'anyError';
+    
+    expect(component.shouldShowComponent()).toBeTruthy;
   })
-
 
   it('should hide error message on field not touched', () => {
     component.field = new FormGroup({anyField: new FormControl()});
 
     component.field.setErrors({anyError: true});
     component.error = 'anyError';
-
+    
     expect(component.shouldShowComponent()).toBeFalsy;
   })
 
@@ -45,7 +42,7 @@ describe('ErrorMessageComponent', () => {
 
     component.field.markAsTouched();
     component.error = 'anyError';
-
+    
     expect(component.shouldShowComponent()).toBeFalsy;
   })
 
@@ -55,7 +52,8 @@ describe('ErrorMessageComponent', () => {
     component.field.markAsTouched();
     component.field.setErrors({anyError: true});
     component.error = 'anotherError';
-
+    
     expect(component.shouldShowComponent()).toBeFalsy;
   })
+
 });

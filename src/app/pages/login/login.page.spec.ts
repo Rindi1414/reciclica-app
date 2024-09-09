@@ -12,9 +12,9 @@ import { LoginState } from 'src/store/login/LoginState'; // Pastikan path ini be
 import { login, loginFail, loginSuccess, recoverPassword, recoverPasswordFail, recoverPasswordSuccess } from 'src/store/login/login.actions';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Observable, of, throwError } from 'rxjs';
-import { User } from 'src/app/modul/user/User';
+import { User } from 'src/app/model/user/User';
 import { AngularFireModule } from '@angular/fire/compat';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 describe('LoginPage', () => {
   let component: LoginPage;
@@ -34,7 +34,7 @@ describe('LoginPage', () => {
         StoreModule.forRoot({}), // Berikan state root yang sesuai
         StoreModule.forFeature("loading", loadingReducer),
         StoreModule.forFeature("login", loginReducer),
-        AngularFireModule.initializeApp(environment.firebaseConfig)
+        AngularFireModule.initializeApp(environment.firebaseConfig),
       ]
     }).compileComponents();
 
@@ -96,7 +96,8 @@ describe('LoginPage', () => {
     expect(toastController.create).toHaveBeenCalledTimes(1);
   })
 
-  it('should show loading and start login when logging in', () => {
+  it('should show loading and start login when logging in', () =>
+{
     fixture.detectChanges();
     component.form.get('email')?.setValue('valid@email.com');
     component.form.get('password')?.setValue('anyPassword');
